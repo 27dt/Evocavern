@@ -21,3 +21,10 @@ shape = SubResource("RectangleShape2D_fpdqg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -181)
 position_smoothing_enabled = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PrimaryFireTimer" type="Timer" parent="Timers"]
+wait_time = 0.16
+
+[connection signal="timeout" from="Timers/PrimaryFireTimer" to="." method="_on_primary_fire_timer_timeout"]

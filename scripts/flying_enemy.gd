@@ -25,8 +25,8 @@ func move(delta):
 # Function connected to the Timer object's signal
 func _on_timer_timeout() -> void:
 	# Sets a random timeout for the timer (random flying movement)
-	$Timer.wait_time = choose([1.0, 1.2, 1.5, 2.0]);
-	print($Timer.wait_time);
+	$Timer.wait_time = choose([0.25, 0.5, 0.75, 1.0]);
+
 	# Choose a random direction if not chasing player
 	if !chasingPlayer:
 		dir = choose([Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]);
@@ -36,5 +36,4 @@ func choose(randArray):
 	# Shuffle array
 	randArray.shuffle();
 	# Return the first element
-	print(randArray.front())
 	return randArray.front();
