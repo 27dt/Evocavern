@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=11 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c766puplh60bk" path="res://Inventory/player_inv.tres" id="3_8sca1"]
 [ext_resource type="PackedScene" uid="uid://dxyjniviyhhnj" path="res://Scenes/flying_enemy.tscn" id="4_nha48"]
 [ext_resource type="PackedScene" uid="uid://cbtkn32xr26a3" path="res://Scenes/testcollectable.tscn" id="5_554tw"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="7_q3xdm"]
 [ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="7_shtxr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mxl7"]
@@ -574,6 +575,7 @@ offset_bottom = 121.0
 grow_horizontal = 2
 scale = Vector2(1.52, 1.52)
 value = 100.0
+script = ExtResource("7_q3xdm")
 
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_shtxr")]
 anchors_preset = 5

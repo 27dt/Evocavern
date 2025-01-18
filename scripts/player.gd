@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @export var inv: Inv
+@export var maxHealth = 100
+@onready var currentHealth: int = maxHealth
 
 signal shoot(pos: Vector2);
 
