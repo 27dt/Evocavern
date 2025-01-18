@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbtkn32xr26a3"]
+
+[ext_resource type="Script" path="res://testcollectable.gd" id="1_iwd8u"]
+[ext_resource type="Texture2D" uid="uid://c1shwvcj6yegt" path="res://Assets/Items/h.png" id="2_eapvr"]
+[ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/Items/testitem_resource.tres" id="2_hayxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imurs"]
+radius = 12.0
+
+[node name="testcollectable" type="StaticBody2D"]
+script = ExtResource("1_iwd8u")
+item = ExtResource("2_hayxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eapvr")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_imurs")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

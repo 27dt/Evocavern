@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=8 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_m75cs"]
-[ext_resource type="Texture2D" uid="uid://cf6obaa0v11h" path="res://Assets/TempTileMap.png" id="2_akto3"]
+[ext_resource type="Texture2D" uid="uid://cf6obaa0v11h" path="res://Assets/Tilemaps/TempTileMap.png" id="2_akto3"]
+[ext_resource type="Resource" uid="uid://c766puplh60bk" path="res://Inventory/player_inv.tres" id="3_8sca1"]
+[ext_resource type="PackedScene" uid="uid://cbtkn32xr26a3" path="res://Scenes/testcollectable.tscn" id="5_554tw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mxl7"]
 texture = ExtResource("2_akto3")
@@ -535,8 +537,13 @@ sources/1 = SubResource("TileSetAtlasSource_4mxl7")
 [node name="World" type="Node2D"]
 script = ExtResource("1_m75cs")
 
-[node name="Player" parent="." instance=ExtResource("1_lxvx8")]
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAD//wEAAQABAAEAAAD+/wEAAQABAAEAAAD9/wEAAQABAAEAAAD8/wEAAQABAAEAAAAAAAEAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_478jg")
+
+[node name="testcollectable" parent="." instance=ExtResource("5_554tw")]
+z_index = 1
+position = Vector2(265, 56)
+
+[node name="Player" parent="." instance=ExtResource("1_lxvx8")]
+inv = ExtResource("3_8sca1")

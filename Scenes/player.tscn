@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkp8qt8lprco1"]
+[gd_scene load_steps=5 format=3 uid="uid://bkp8qt8lprco1"]
 
 [ext_resource type="Texture2D" uid="uid://bh6stbqijegm2" path="res://icon.svg" id="1_gg1u0"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_nknvn"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nknvn"]
+[ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="3_fnt5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpdqg"]
 size = Vector2(47, 129)
@@ -21,3 +22,9 @@ shape = SubResource("RectangleShape2D_fpdqg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -181)
 position_smoothing_enabled = true
+
+[node name="Inv_UI" parent="." instance=ExtResource("3_fnt5e")]
+offset_left = -271.0
+offset_top = -187.0
+offset_right = 274.0
+offset_bottom = -149.0
