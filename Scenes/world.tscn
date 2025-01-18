@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=7 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
-[ext_resource type="Script" path="res://Scenes/world.gd" id="1_m75cs"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
 [ext_resource type="Texture2D" uid="uid://cf6obaa0v11h" path="res://Assets/TempTileMap.png" id="2_akto3"]
+[ext_resource type="PackedScene" uid="uid://dxyjniviyhhnj" path="res://Scenes/flying_enemy.tscn" id="4_nha48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mxl7"]
 texture = ExtResource("2_akto3")
@@ -540,3 +541,5 @@ script = ExtResource("1_m75cs")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAD//wEAAQABAAEAAAD+/wEAAQABAAEAAAD9/wEAAQABAAEAAAD8/wEAAQABAAEAAAAAAAEAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_478jg")
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("4_nha48")]
