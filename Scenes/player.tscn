@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkp8qt8lprco1"]
+[gd_scene load_steps=6 format=3 uid="uid://bkp8qt8lprco1"]
 
 [ext_resource type="Texture2D" uid="uid://bh6stbqijegm2" path="res://icon.svg" id="1_gg1u0"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nknvn"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpdqg"]
 size = Vector2(47, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw8co"]
+size = Vector2(46, 80)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nknvn")
@@ -15,7 +18,7 @@ position = Vector2(0, -68)
 scale = Vector2(0.375, 1)
 texture = ExtResource("1_gg1u0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, -68.5)
 shape = SubResource("RectangleShape2D_fpdqg")
 
@@ -36,6 +39,13 @@ offset_left = -271.0
 offset_top = -187.0
 offset_right = 274.0
 offset_bottom = -149.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+position = Vector2(0, -68.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_uw8co")
 
 [connection signal="timeout" from="Timers/PrimaryFireTimer" to="." method="_on_primary_fire_timer_timeout"]
 [connection signal="timeout" from="Timers/SecondaryFireTimer" to="." method="_on_secondary_fire_timer_timeout"]

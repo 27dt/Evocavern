@@ -16,7 +16,6 @@ var facingDir := 1;
 var primFireCount := 0;
 
 func _ready():
-	
 	Global.playerBody = self;
 
 func _physics_process(delta: float) -> void:
@@ -74,3 +73,6 @@ func _on_secondary_fire_timer_timeout() -> void:
 
 func collect(item):
 	inv.insert(item)
+
+func _on_flying_enemy_deal_damage(damage: int) -> void:
+	pass

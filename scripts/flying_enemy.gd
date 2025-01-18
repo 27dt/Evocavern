@@ -7,6 +7,8 @@ var player: CharacterBody2D;
 
 var health = Global.flyingHealth;
 
+signal dealDamage(damage: int);
+
 var dead = false;
 var takingDamage = false;
 
@@ -23,14 +25,18 @@ func move(delta):
 		if chasingPlayer and !takingDamage:
 			velocity = position.direction_to(player.position) * speed;
 		elif chasingPlayer and takingDamage:
-			var knockback_dir = position.direction_to(player.position) * -50;
+			var oldvelocity = velocity;
+			var knockback_dir = position.direction_to(player.position) * -100;
 			velocity = knockback_dir;
-			await get_tree().create_timer(0.75).timeout
+			await get_tree().create_timer(1).timeout
+			velocity = oldvelocity;
 			takingDamage = false;
 		elif !chasingPlayer and takingDamage:
-			var knockback_dir = position.direction_to(player.position) * -50;
+			var oldvelocity = velocity;
+			var knockback_dir = position.direction_to(player.position) * -100;
 			velocity = knockback_dir;
-			await get_tree().create_timer(0.75).timeout
+			await get_tree().create_timer(1).timeout
+			velocity = oldvelocity;
 			takingDamage = false;
 			chasingPlayer = true;
 		else:
@@ -57,8 +63,12 @@ func choose(randArray):
 	return randArray.front();
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	print(area.is_in_group("player"))
 	if area.is_in_group("Bullets"):
 		takeDamage(area.damage);
+	if area.is_in_group("player") and !takingDamage:
+		dealDamage.emit(Global.flyingDamage);
+		takeDamage(10)
 
 func takeDamage(damage: int):
 	health -= damage;
