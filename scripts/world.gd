@@ -20,9 +20,12 @@ func _on_player_shoot(pos: Vector2, dir: float, secondary: bool) -> void:
 		$Bullets.add_child(bullet);
 		bullet.position = pos;
 		bullet.direction = dir;
+		bullet.damage = Global.primaryDamage;
+
 	else:
 		var bullet = bulletScene.instantiate();
 		$Bullets.add_child(bullet);
 		bullet.position = pos;
 		bullet.direction = dir;
+		bullet.damage = Global.secondaryDamage;
 		bullet.scale = Vector2(1.5, 1.5);

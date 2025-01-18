@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tu2m"]
 size = Vector2(22, 6)
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" groups=["Bullets"]]
 script = ExtResource("1_t6n6u")
 speed = 600
 

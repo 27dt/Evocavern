@@ -2,6 +2,7 @@ extends Area2D
 
 var direction: int = 1;
 @export var speed := 300;
+@export var damage: int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

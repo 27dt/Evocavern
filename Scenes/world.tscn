@@ -551,6 +551,20 @@ position = Vector2(265, 56)
 inv = ExtResource("3_8sca1")
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("4_nha48")]
+position = Vector2(316, 0)
+scale = Vector2(2.48, 2.48)
+
+[node name="FlyingEnemy2" parent="." instance=ExtResource("4_nha48")]
+position = Vector2(150, 0)
+scale = Vector2(2.48, 2.48)
+
+[node name="FlyingEnemy3" parent="." instance=ExtResource("4_nha48")]
+position = Vector2(445, 0)
+scale = Vector2(2.48, 2.48)
+
+[node name="FlyingEnemy4" parent="." instance=ExtResource("4_nha48")]
+position = Vector2(150, -89)
+scale = Vector2(2.48, 2.48)
 
 [node name="Bullets" type="Node2D" parent="."]
 
