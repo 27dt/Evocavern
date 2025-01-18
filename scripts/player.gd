@@ -71,8 +71,8 @@ func _on_secondary_fire_timer_timeout() -> void:
 	canShootSec = true;
 	canShootPrim = true;
 
-func collect(item):
-	inv.insert(item)
-
 func _on_flying_enemy_deal_damage(damage: int) -> void:
 	pass
+
+func _on_testcollectable_collect(item: InvItem) -> void:
+	inv.insert(item)

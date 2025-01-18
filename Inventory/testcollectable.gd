@@ -3,9 +3,10 @@ extends StaticBody2D
 @export var item: InvItem
 var player = null
 
-signal collect(item: InvItem)
+signal collect_item(item: InvItem)
 
 func _on_interactable_area_area_entered(area: Area2D) -> void:
+	print(area.get_groups())
 	if area.is_in_group("player"):
 		print ("bro")
 		playercollect()
@@ -13,5 +14,4 @@ func _on_interactable_area_area_entered(area: Area2D) -> void:
 		self.queue_free()
 
 func playercollect():
-	#player.collect(item)
-	collect.emit(item)
+	collect_item.emit(item)

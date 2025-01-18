@@ -19,4 +19,4 @@ texture = ExtResource("2_eapvr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
 shape = SubResource("CircleShape2D_imurs")
 
-[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="area_entered" from="interactable_area" to="." method="_on_interactable_area_area_entered"]
