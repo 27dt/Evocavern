@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 signal shoot(pos: Vector2);
 
 var canShootPrim := true;
+var canShootSec := true;
 
 var facingDir := 1;
 
@@ -30,10 +31,19 @@ func _physics_process(delta: float) -> void:
 	# Handle primary fire.
 	if Input.is_action_just_pressed("primary_fire") and canShootPrim:
 		# Send a firing signal to the bullet
-		shoot.emit(global_position, facingDir);
+		shoot.emit(global_position, facingDir, false);
 		canShootPrim = false;
+		canShootSec = false;
 		$Timers/PrimaryFireTimer.start();
 		primFireCount = 1;
+
+	# Handle secondary fire.
+	if Input.is_action_just_pressed("secondary_fire") and canShootSec:
+		# Send a firing signal to the bullet
+		shoot.emit(global_position, facingDir, true);
+		canShootPrim = false;
+		canShootSec = false;
+		$Timers/SecondaryFireTimer.start();
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -49,12 +59,18 @@ func _physics_process(delta: float) -> void:
 func _on_primary_fire_timer_timeout() -> void:
 	if primFireCount < 3:
 		$Timers/PrimaryFireTimer.start()
-		shoot.emit(global_position, facingDir);
+		shoot.emit(global_position, facingDir, false);
 		primFireCount += 1;
 	else:
 		primFireCount = 0;
 		canShootPrim = true;
+		canShootSec = true;
 		$Timers/PrimaryFireTimer.stop();
-	
+
+func _on_secondary_fire_timer_timeout() -> void:
+	$Timers/PrimaryFireTimer.stop();
+	canShootSec = true;
+	canShootPrim = true;
+
 func collect(item):
 	inv.insert(item)

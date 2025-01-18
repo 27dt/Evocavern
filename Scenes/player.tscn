@@ -28,6 +28,9 @@ position_smoothing_enabled = true
 [node name="PrimaryFireTimer" type="Timer" parent="Timers"]
 wait_time = 0.16
 
+[node name="SecondaryFireTimer" type="Timer" parent="Timers"]
+wait_time = 1.509
+
 [node name="Inv_UI" parent="." instance=ExtResource("3_fnt5e")]
 offset_left = -271.0
 offset_top = -187.0
@@ -35,3 +38,4 @@ offset_right = 274.0
 offset_bottom = -149.0
 
 [connection signal="timeout" from="Timers/PrimaryFireTimer" to="." method="_on_primary_fire_timer_timeout"]
+[connection signal="timeout" from="Timers/SecondaryFireTimer" to="." method="_on_secondary_fire_timer_timeout"]

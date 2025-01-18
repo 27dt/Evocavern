@@ -14,8 +14,15 @@ func _process(delta: float) -> void:
 		get_tree().quit();
 
 
-func _on_player_shoot(pos: Vector2, dir: float) -> void:
-	var bullet = bulletScene.instantiate();
-	$Bullets.add_child(bullet);
-	bullet.position = pos;
-	bullet.direction = dir;
+func _on_player_shoot(pos: Vector2, dir: float, secondary: bool) -> void:
+	if !secondary:
+		var bullet = bulletScene.instantiate();
+		$Bullets.add_child(bullet);
+		bullet.position = pos;
+		bullet.direction = dir;
+	else:
+		var bullet = bulletScene.instantiate();
+		$Bullets.add_child(bullet);
+		bullet.position = pos;
+		bullet.direction = dir;
+		bullet.scale = Vector2(1.5, 1.5);
