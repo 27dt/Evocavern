@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@export var inv: Inv
+
 signal shoot(pos: Vector2);
 
 var canShootPrim := true;
@@ -53,3 +55,6 @@ func _on_primary_fire_timer_timeout() -> void:
 		primFireCount = 0;
 		canShootPrim = true;
 		$Timers/PrimaryFireTimer.stop();
+	
+func collect(item):
+	inv.insert(item)
