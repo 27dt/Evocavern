@@ -99,4 +99,10 @@ scale = Vector2(2.48, 2.48)
 tile_set = SubResource("TileSet_b8g8j")
 format = 2
 
+[node name="grenades" type="Node2D" parent="."]
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[connection signal="collect" from="testcollectable" to="Player" method="_on_testcollectable_collect"]
+[connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
