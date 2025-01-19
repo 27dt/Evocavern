@@ -14,6 +14,7 @@ var JUMP_VELOCITY = -620.0
 
 signal shoot(pos: Vector2);
 signal grenade(pos: Vector2);
+signal itemPickup();
 
 var canShootPrim := true;
 var canShootSec := true;
@@ -36,14 +37,14 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump_sfx.play()
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY*Global.jumpScale
 		doubleJump = true;
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
 		if doubleJump == true:
 			jump_sfx.play()
-			velocity.y = JUMP_VELOCITY/1.3
+			velocity.y = JUMP_VELOCITY*Global.jumpScale/1.3
 			doubleJump = false;
 		else:
 			velocity += get_gravity() * delta
@@ -89,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * Global.speedMultiplier
 		facingDir = direction;
 		walking = true;
 		if facingDir > 0 and canShootPrim and canShootSec:
