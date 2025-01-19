@@ -95,6 +95,7 @@ position = Vector2(964, 339)
 [node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1926, 336)
 
+[connection signal="enemyConnect" from="." to="Player" method="_on_world_enemy_connect"]
 [connection signal="collect" from="testcollectable" to="Player" method="_on_testcollectable_collect"]
 [connection signal="collect" from="testcollectable2" to="Player" method="_on_testcollectable_collect"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]

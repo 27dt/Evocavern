@@ -12,6 +12,8 @@ var wave_spawn_ended: bool
 
 var wave_starting = true;
 
+signal enemyConnect(enemy: CharacterBody2D);
+
 func _ready() -> void:
 	set_process(true);
 	starting_nodes = $Enemies.get_child_count();
@@ -32,6 +34,7 @@ func trigger_wave():
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate();
 	$Enemies.add_child(enemy);
+	enemyConnect.emit(enemy);
 	print("adding enemy")
 	var spawnPoint: Marker2D = choose([
 		$SpawnPoints/Spawn1,

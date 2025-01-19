@@ -95,3 +95,6 @@ func _on_flying_enemy_deal_damage(damage: int) -> void:
 
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
+
+func _on_world_enemy_connect(enemy: CharacterBody2D) -> void:
+	enemy.dealDamage.connect(_on_flying_enemy_deal_damage);
