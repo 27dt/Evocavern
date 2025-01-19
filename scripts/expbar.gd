@@ -1,5 +1,7 @@
 extends TextureProgressBar
 
+@onready var level_up_sfx = $"Level Up SFX"
+
 func _process(delta):
 	update()
 
@@ -9,6 +11,7 @@ func update():
 		Global.expMax += 80
 		max_value += 80
 		Global.exp = 0
+		level_up_sfx.play()
 	
 	value = Global.exp
 	

@@ -58,10 +58,12 @@ label_settings = SubResource("LabelSettings_ik2a8")
 
 [node name="Enemy Hit SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_33fa3")
+volume_db = -3.175
 
 [node name="Enemy Death SFX" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(1, 1)
 stream = ExtResource("5_7k5xt")
+volume_db = -15.928
 
 [connection signal="timeout" from="RoamingTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="RoamTrigger" to="." method="_on_roam_trigger_area_entered"]
