@@ -13,7 +13,7 @@ var dead = false;
 var takingDamage = false;
 
 # Chasing player variable
-var chasingPlayer: bool = false;
+var chasingPlayer: bool = true;
 
 func _process(delta):
 	if Global.thrownGrenade and !takingDamage:
