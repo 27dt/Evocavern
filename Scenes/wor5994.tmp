@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
 [ext_resource type="Texture2D" uid="uid://bkvmgcxw6mhg7" path="res://Assets/Bars/exp_progress.png" id="12_dg4io"]
-[ext_resource type="Script" path="res://scripts/expbar.gd" id="13_rgv8t"]
+[ext_resource type="Script" path="res://Scripts/expbar.gd" id="13_bfkls"]
 [ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Script" path="res://scripts/items.gd" id="17_4glm3"]
 
@@ -158,7 +158,7 @@ grow_vertical = 0
 max_value = 60.0
 texture_under = ExtResource("11_a3gvv")
 texture_progress = ExtResource("12_dg4io")
-script = ExtResource("13_rgv8t")
+script = ExtResource("13_bfkls")
 
 [node name="exp" type="Label" parent="CanvasLayer/expbar"]
 layout_mode = 1
@@ -247,4 +247,3 @@ script = ExtResource("17_4glm3")
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="pressed" from="CanvasLayer/WaveButton" to="." method="_on_button_pressed"]
-[connection signal="spawnItem" from="CanvasLayer/expbar" to="Items" method="_on_expbar_spawn_item"]

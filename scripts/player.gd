@@ -129,13 +129,14 @@ func _on_secondary_fire_timer_timeout() -> void:
 
 func _on_flying_enemy_deal_damage(damage: int) -> void:
 	print("deal damage")
-	Global.playerHealth -= Global.flyingDamage;
+	var damageToDeal = round(0.3*(Global.currentWave)*(log(Global.currentWave)) + 5);
+	Global.playerHealth -= damageToDeal;
 	print(Global.playerHealth);
 	if Global.playerHealth <= 0:
 		visible = false
 		SPEED = 0
 		JUMP_VELOCITY = 0
-	$Label.text = str("-", Global.flyingDamage);
+	$Label.text = str("-", damageToDeal);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";
 
