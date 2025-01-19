@@ -3,6 +3,10 @@ extends Node
 var playerBody: CharacterBody2D;
 
 var currentWave = 1;
+var currentLevel = 1;
+var enemyKills = 0;
+var expMax = 60;
+var exp = 0;
 
 # Player Stats
 var primaryDamage = 10;

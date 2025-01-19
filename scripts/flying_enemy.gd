@@ -44,8 +44,11 @@ func move(delta):
 		else:
 			velocity += dir * speed * delta;
 	else:
+
 		await get_tree().create_timer(0.75).timeout
 		queue_free();
+		print("exp: ", Global.exp)
+		print("enemy kills: ", Global.enemyKills)
 	move_and_slide();
 
 # Function connected to the Timer object's signal
@@ -74,11 +77,21 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(3)
 
 func takeDamage(damage: int):
-	health -= damage;
-	takingDamage = true;
-	if health <= 0:
-		health = 0;
-		dead = true;
+	
+	# this nasty chop-shop of nested if statments prevents poision damage from incrementing the level xp like crazy, 
+	# due to calling takeDamage numerous times.
+	# i swear, i poisoned 1 enemy without "if !dead" and went up 9 levels.
+	
+	if !dead:
+		health -= damage;
+		takingDamage = true;
+		if health <= 0:
+			health = 0;
+			dead = true;
+		if dead:
+			Global.exp += 20
+			Global.enemyKills += 1
+			return
 	$Label.text = str("-", damage);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";
