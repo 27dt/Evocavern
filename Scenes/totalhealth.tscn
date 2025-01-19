@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ylfunq621a7m"]
+
+[ext_resource type="Script" path="res://scripts/testcollectable.gd" id="1_ca5x2"]
+[ext_resource type="Resource" uid="uid://waoqxyjj1yfj" path="res://Inventory/Items/totalhealth.tres" id="2_mljpr"]
+[ext_resource type="Texture2D" uid="uid://dq2jl5yon26fl" path="res://Assets/Items/totalhealth.png" id="3_oi30y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imurs"]
+radius = 12.0
+
+[node name="totalhealth" type="StaticBody2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_ca5x2")
+item = ExtResource("2_mljpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_oi30y")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_imurs")
+
+[connection signal="area_entered" from="interactable_area" to="." method="_on_interactable_area_area_entered"]

@@ -127,3 +127,7 @@ func _on_button_pressed() -> void:
 		starting_nodes = $Enemies.get_child_count();
 		current_nodes = $Enemies.get_child_count();
 		trigger_wave();
+
+
+func _on_scalenade_collect(item: InvItem) -> void:
+	pass # Replace with function body.
