@@ -10,7 +10,6 @@ var JUMP_VELOCITY = -620.0
 #AudioSteamPlayer2D references for SFX
 @onready var footsteps_sfx = $"Footsteps SFX"
 @onready var jump_sfx = $"Jump SFX"
-@onready var level_up_sfx = $"Level Up SFX"
 @onready var pickup_sfx = $"Pickup SFX"
 
 signal shoot(pos: Vector2);
@@ -35,15 +34,15 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		jump_sfx.play()
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_sfx.play()
 		velocity.y = JUMP_VELOCITY
 		doubleJump = true;
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
 		if doubleJump == true:
+			jump_sfx.play()
 			velocity.y = JUMP_VELOCITY/1.3
 			doubleJump = false;
 		else:
