@@ -22,6 +22,7 @@ var canShootPrim := true;
 var canShootSec := true;
 var walking := false;
 
+var doubleJump := true;
 var facingDir := 1;
 
 #used to check how many times a bullet has been fired for cooldown
@@ -38,8 +39,18 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		jump_sfx.play()
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		doubleJump = true;
 
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and !is_on_floor():
+		if doubleJump == true:
+			velocity.y = JUMP_VELOCITY/1.3
+			doubleJump = false;
+		else:
+			velocity += get_gravity() * delta
+	
 	# Handle primary fire.
 	if Input.is_action_just_pressed("primary_fire") and canShootPrim:
 		# Send a firing signal to the bullet
@@ -113,3 +124,6 @@ func _on_flying_enemy_deal_damage(damage: int) -> void:
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
 	pickup_sfx.play()
+
+func _on_world_enemy_connect(enemy: CharacterBody2D) -> void:
+	enemy.dealDamage.connect(_on_flying_enemy_deal_damage);

@@ -2,6 +2,8 @@ extends Node
 
 var playerBody: CharacterBody2D;
 
+var currentWave = 1;
+
 # Player Stats
 var primaryDamage = 10;
 var secondaryDamage = 25;

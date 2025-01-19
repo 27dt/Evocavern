@@ -1,7 +1,5 @@
 extends TextureProgressBar
 
-@export var player: Player
-
 func _process(delta):
 	update()
 
