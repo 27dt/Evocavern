@@ -78,7 +78,11 @@ func _on_secondary_fire_timer_timeout() -> void:
 	canShootPrim = true;
 
 func _on_flying_enemy_deal_damage(damage: int) -> void:
-	pass
+	Global.playerHealth -= Global.flyingDamage;
+	print(Global.playerHealth);
+	if Global.playerHealth < 0:
+		get_tree().quit();
+
 
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
