@@ -3,6 +3,8 @@ extends Node2D
 const bulletScene: PackedScene = preload("res://Scenes/bullet.tscn")
 const grenadeScene: PackedScene = preload("res://Scenes/grenade.tscn")
 
+@onready var shoot_sfx = $"Shoot SFX"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(true);
@@ -16,7 +18,9 @@ func _process(delta: float) -> void:
 
 
 func _on_player_shoot(pos: Vector2, dir: float, secondary: bool) -> void:
+	
 	if !secondary:
+		shoot_sfx.play()
 		var bullet = bulletScene.instantiate();
 		$Bullets.add_child(bullet);
 		bullet.position = pos;
@@ -24,6 +28,7 @@ func _on_player_shoot(pos: Vector2, dir: float, secondary: bool) -> void:
 		bullet.damage = Global.primaryDamage;
 
 	else:
+		shoot_sfx.play()
 		var bullet = bulletScene.instantiate();
 		$Bullets.add_child(bullet);
 		bullet.position = pos;

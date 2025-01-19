@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkp8qt8lprco1"]
+[gd_scene load_steps=11 format=3 uid="uid://bkp8qt8lprco1"]
 
 [ext_resource type="Texture2D" uid="uid://bh6stbqijegm2" path="res://icon.svg" id="1_gg1u0"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nknvn"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_vpnbr"]
+[ext_resource type="AudioStream" uid="uid://6ftrr4xw3djp" path="res://Assets/SFX/Jump SFX.wav" id="5_br3b7"]
+[ext_resource type="AudioStream" uid="uid://dw2ng4ggv5s5" path="res://Assets/SFX/Pickup.wav" id="6_eefw0"]
+[ext_resource type="AudioStream" uid="uid://cl8qvwqxaenv7" path="res://Assets/SFX/Footsteps.wav" id="7_um0p2"]
+[ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="8_hc458"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpdqg"]
 size = Vector2(47, 129)
@@ -54,6 +58,18 @@ position = Vector2(0, -68.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 19.5)
 shape = SubResource("RectangleShape2D_uw8co")
+
+[node name="Jump SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_br3b7")
+
+[node name="Pickup SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_eefw0")
+
+[node name="Footsteps SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_um0p2")
+
+[node name="Level Up SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hc458")
 
 [connection signal="timeout" from="Timers/PrimaryFireTimer" to="." method="_on_primary_fire_timer_timeout"]
 [connection signal="timeout" from="Timers/SecondaryFireTimer" to="." method="_on_secondary_fire_timer_timeout"]
