@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_yjjkh")
-name = "testitem"
+name = "jumpvelocity"
 texture = ExtResource("2_ns3fj")
