@@ -71,7 +71,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(area.damage);
 	if area.is_in_group("player") and !takingDamage:
 		dealDamage.emit(Global.flyingDamage);
-		takeDamage(10)
+		takeDamage(3)
 
 func takeDamage(damage: int):
 	health -= damage;

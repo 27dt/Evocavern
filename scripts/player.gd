@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+class_name Player
+
+var SPEED = 300.0
+var JUMP_VELOCITY = -620.0
 
 @export var inv: Inv
 @export var maxHealth = 100
@@ -81,11 +83,13 @@ func _on_secondary_fire_timer_timeout() -> void:
 	canShootPrim = true;
 
 func _on_flying_enemy_deal_damage(damage: int) -> void:
+	print("deal damage")
 	Global.playerHealth -= Global.flyingDamage;
 	print(Global.playerHealth);
-	if Global.playerHealth < 0:
-		get_tree().quit();
-
+	if Global.playerHealth <= 0:
+		visible = false
+		SPEED = 0
+		JUMP_VELOCITY = 0
 
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
