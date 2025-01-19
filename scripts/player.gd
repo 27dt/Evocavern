@@ -13,6 +13,7 @@ signal grenade(pos: Vector2);
 var canShootPrim := true;
 var canShootSec := true;
 
+var doubleJump := true;
 var facingDir := 1;
 
 #used to check how many times a bullet has been fired for cooldown
@@ -29,7 +30,16 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		doubleJump = true;
 
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and !is_on_floor():
+		if doubleJump == true:
+			velocity.y = JUMP_VELOCITY/1.3
+			doubleJump = false;
+		else:
+			velocity += get_gravity() * delta
+	
 	# Handle primary fire.
 	if Input.is_action_just_pressed("primary_fire") and canShootPrim:
 		# Send a firing signal to the bullet
