@@ -50,7 +50,8 @@ func _physics_process(delta: float) -> void:
 		# Handle secondary fire.
 	if Input.is_action_just_pressed("unique_ability"):
 		# Send a firing signal to the bullet
-		grenade.emit(global_position, facingDir);
+		if !Global.thrownGrenade:
+			grenade.emit(global_position, facingDir);
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

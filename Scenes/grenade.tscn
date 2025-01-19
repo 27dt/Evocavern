@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://yrwu27m3oshs"]
+[gd_scene load_steps=6 format=3 uid="uid://yrwu27m3oshs"]
 
 [ext_resource type="Script" path="res://scripts/grenade.gd" id="1_h5fou"]
+[ext_resource type="Texture2D" uid="uid://wwjia5mf245l" path="res://Assets/Particles/Flame.png" id="2_vsvua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mg85"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fqw6p"]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8khq"]
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["PoisonCloud"]]
 mass = 0.125
 angular_velocity = 0.312152
 script = ExtResource("1_h5fou")
@@ -15,6 +18,59 @@ script = ExtResource("1_h5fou")
 scale = Vector2(2.48, 2.48)
 shape = SubResource("CircleShape2D_7mg85")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="GrenadeSprite" type="Sprite2D" parent="."]
 scale = Vector2(32.32, 32.32)
 texture = SubResource("PlaceholderTexture2D_fqw6p")
+
+[node name="Area2D" type="Area2D" parent="." groups=["PoisonCloud"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["PoisonCloud"]]
+scale = Vector2(-19.8652, -19.8652)
+shape = SubResource("CircleShape2D_r8khq")
+
+[node name="Explode" type="CPUParticles2D" parent="."]
+scale = Vector2(0.975687, 1.2623)
+emitting = false
+amount = 5
+lifetime = 0.5
+preprocess = 7.59
+speed_scale = 0.85
+explosiveness = 0.22
+randomness = 0.23
+lifetime_randomness = 0.09
+texture = ExtResource("2_vsvua")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0.17, -1.075)
+gravity = Vector2(0, 0)
+initial_velocity_min = 177.22
+initial_velocity_max = 234.18
+linear_accel_min = -0.2
+linear_accel_max = 17.0
+damping_max = 0.205
+color = Color(0.788956, 0.586225, 7.70092e-07, 1)
+hue_variation_min = -0.06
+hue_variation_max = 0.66
+
+[node name="Poison" type="CPUParticles2D" parent="."]
+scale = Vector2(0.987769, 1.12352)
+emitting = false
+lifetime = 1.5
+preprocess = 7.59
+speed_scale = 0.85
+explosiveness = 0.22
+randomness = 0.23
+lifetime_randomness = 0.09
+texture = ExtResource("2_vsvua")
+emission_shape = 3
+emission_rect_extents = Vector2(157.28, 63.97)
+direction = Vector2(0.07, -1.355)
+spread = 23.35
+gravity = Vector2(0, 0)
+initial_velocity_min = 56.96
+initial_velocity_max = 145.57
+linear_accel_min = -0.2
+linear_accel_max = 17.0
+damping_max = 0.205
+color = Color(0.608904, 0.656161, 0.341308, 1)
+hue_variation_max = 0.22

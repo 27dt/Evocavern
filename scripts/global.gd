@@ -14,3 +14,5 @@ var flyingDamage = 10;
 var flyingHealth = 25;
 var flyingHealthMax = 25;
 var flyingHealthMin = 0;
+
+var thrownGrenade = false;

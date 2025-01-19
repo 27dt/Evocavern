@@ -39,4 +39,4 @@ func _on_player_grenade(pos: Vector2, dir: float) -> void:
 	grenade.position.y = grenade.position.y - 50;
 	grenade.position.x = grenade.position.x + (50 * dir);
 	grenade.direction = dir;
-	grenade.linear_velocity.x = 1000 * dir;
+	grenade.linear_velocity.x = 500 * dir;

@@ -16,6 +16,8 @@ var takingDamage = false;
 var chasingPlayer: bool = true;
 
 func _process(delta):
+	if Global.thrownGrenade and !takingDamage:
+		poisonDamage();
 	move(delta);
 
 func move(delta):
@@ -64,6 +66,7 @@ func choose(randArray):
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	print(area.is_in_group("player"))
+	print(area.get_groups())
 	if area.is_in_group("Bullets"):
 		takeDamage(area.damage);
 	if area.is_in_group("player") and !takingDamage:
@@ -76,3 +79,9 @@ func takeDamage(damage: int):
 	if health <= 0:
 		health = 0;
 		dead = true;
+
+func poisonDamage():
+	for i: Area2D in $Hitbox.get_overlapping_areas():
+		if i.is_in_group("PoisonCloud"):
+			takeDamage(5);
+			await get_tree().create_timer(1).timeout
