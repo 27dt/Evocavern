@@ -61,7 +61,6 @@ stream = ExtResource("4_33fa3")
 volume_db = -3.175
 
 [node name="Enemy Death SFX" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("5_7k5xt")
 volume_db = -15.928
 
