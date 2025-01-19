@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt15s8517d41o"]
+
+[ext_resource type="Texture2D" uid="uid://hlntscylubb7" path="res://Assets/Background/Evocavern_background_scaled_up_tall.png" id="1_s1tjt"]
+
+[node name="ParallaxBG" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(1148, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -649)
+scale = Vector2(0.996528, 1.00077)
+texture = ExtResource("1_s1tjt")
+centered = false

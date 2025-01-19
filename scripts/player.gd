@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name Player
-
 var SPEED = 300.0
 var JUMP_VELOCITY = -620.0
 
@@ -12,7 +10,6 @@ var JUMP_VELOCITY = -620.0
 #AudioSteamPlayer2D references for SFX
 @onready var footsteps_sfx = $"Footsteps SFX"
 @onready var jump_sfx = $"Jump SFX"
-@onready var level_up_sfx = $"Level Up SFX"
 @onready var pickup_sfx = $"Pickup SFX"
 
 signal shoot(pos: Vector2);
@@ -37,15 +34,15 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		jump_sfx.play()
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_sfx.play()
 		velocity.y = JUMP_VELOCITY
 		doubleJump = true;
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
 		if doubleJump == true:
+			jump_sfx.play()
 			velocity.y = JUMP_VELOCITY/1.3
 			doubleJump = false;
 		else:
@@ -57,6 +54,12 @@ func _physics_process(delta: float) -> void:
 		shoot.emit(global_position, facingDir, false);
 		canShootPrim = false;
 		canShootSec = false;
+		
+		if facingDir > 0:
+			$AnimatedSprite2D.play("shoot_right")
+		else:
+			$AnimatedSprite2D.play("shoot_left")
+			
 		$Timers/PrimaryFireTimer.start();
 		primFireCount = 1;
 
@@ -66,6 +69,13 @@ func _physics_process(delta: float) -> void:
 		shoot.emit(global_position, facingDir, true);
 		canShootPrim = false;
 		canShootSec = false;
+		
+		if facingDir > 0:
+			$AnimatedSprite2D.play("shoot_right")
+			await get_tree().create_timer(1).timeout
+		else:
+			$AnimatedSprite2D.play("shoot_left")
+		
 		$Timers/SecondaryFireTimer.start();
 	
 		# Handle secondary fire.
@@ -82,8 +92,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		facingDir = direction;
 		walking = true;
+		if facingDir > 0 and canShootPrim and canShootSec:
+			$AnimatedSprite2D.play("move_right")
+		elif canShootPrim and canShootSec:
+			$AnimatedSprite2D.play("move_left")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if facingDir > 0 and canShootPrim and canShootSec:
+			$AnimatedSprite2D.play("idle_right")
+		elif canShootPrim and canShootSec:
+			$AnimatedSprite2D.play("idle_left")
 		walking = false;
 	
 	if direction and !walking:

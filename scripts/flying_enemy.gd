@@ -12,8 +12,14 @@ signal dealDamage(damage: int);
 var dead = false;
 var takingDamage = false;
 
+@onready var enemy_hit_sfx = $"Enemy Hit SFX"
+@onready var enemy_death_sfx = $"Enemy Death SFX"
+
 # Chasing player variable
 var chasingPlayer: bool = true;
+
+func _ready() -> void:
+	$AnimatedSprite2D.play("default");
 
 func _process(delta):
 	if Global.thrownGrenade and !takingDamage and !dead:
@@ -78,11 +84,14 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(3)
 
 func takeDamage(damage: int):
+	enemy_hit_sfx.play()
+
 	health -= damage;
 	takingDamage = true;
 	if health <= 0:
 		health = 0;
 		dead = true;
+		enemy_death_sfx.play()
 	if dead:
 		Global.exp += 20
 		Global.enemyKills += 1

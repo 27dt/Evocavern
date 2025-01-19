@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=20 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
 [ext_resource type="Texture2D" uid="uid://bkvmgcxw6mhg7" path="res://Assets/Bars/exp_progress.png" id="12_dg4io"]
 [ext_resource type="Script" path="res://Scripts/expbar.gd" id="13_bfkls"]
+[ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Texture2D" uid="uid://c0fq0n0sr3hr6" path="res://Assets/Background/gameover.png" id="16_js3ee"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvibd"]
@@ -50,7 +51,6 @@ inv = ExtResource("3_8sca1")
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_shtxr")]
 anchors_preset = 5
@@ -197,6 +197,10 @@ text = "EXP. 0 / 60"
 label_settings = SubResource("LabelSettings_epqkf")
 horizontal_alignment = 2
 
+[node name="Level Up SFX" type="AudioStreamPlayer2D" parent="CanvasLayer/expbar"]
+stream = ExtResource("14_fc1ey")
+volume_db = -11.243
+
 [node name="gameover" type="TextureRect" parent="CanvasLayer"]
 visible = false
 offset_right = 1152.0
@@ -212,11 +216,10 @@ stream = ExtResource("11_gx7w3")
 volume_db = -19.676
 autoplay = true
 
-[node name="Level Up SFX" type="AudioStreamPlayer" parent="."]
-
 [node name="Shoot SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
 stream = ExtResource("12_8t7n5")
+volume_db = -8.432
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
