@@ -27,7 +27,6 @@ script = ExtResource("1_nknvn")
 
 [node name="ParallaxBG" parent="." instance=ExtResource("2_1hs6s")]
 position = Vector2(1977.55, 306.897)
-script = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -68)

@@ -12,11 +12,14 @@ signal dealDamage(damage: int);
 var dead = false;
 var takingDamage = false;
 
+@onready var enemy_hit_sfx = $"Enemy Hit SFX"
+@onready var enemy_death_sfx = $"Enemy Death SFX"
+
 # Chasing player variable
 var chasingPlayer: bool = true;
 
 func _process(delta):
-	if Global.thrownGrenade and !takingDamage:
+	if Global.thrownGrenade and !takingDamage and !dead:
 		poisonDamage();
 	move(delta);
 
@@ -44,8 +47,11 @@ func move(delta):
 		else:
 			velocity += dir * speed * delta;
 	else:
+
 		await get_tree().create_timer(0.75).timeout
 		queue_free();
+		print("exp: ", Global.exp)
+		print("enemy kills: ", Global.enemyKills)
 	move_and_slide();
 
 # Function connected to the Timer object's signal
@@ -74,11 +80,16 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(3)
 
 func takeDamage(damage: int):
+	enemy_hit_sfx.play()
 	health -= damage;
 	takingDamage = true;
 	if health <= 0:
 		health = 0;
 		dead = true;
+		enemy_death_sfx.play()
+	if dead:
+		Global.exp += 20
+		Global.enemyKills += 1
 	$Label.text = str("-", damage);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";

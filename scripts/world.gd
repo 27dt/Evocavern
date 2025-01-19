@@ -52,7 +52,20 @@ func spawn_enemy():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	current_nodes = $Enemies.get_child_count();
-	$"CanvasLayer/Enemies Remaining".text = str("Remaining Enemies: ", current_nodes)
+	
+	# Disable wave button if enemies > 0
+	if current_nodes != 0:
+		$"CanvasLayer/WaveButton".visible = false
+		$"CanvasLayer/WaveButton".disabled = true
+	else:
+		$"CanvasLayer/WaveButton".visible = true
+		$"CanvasLayer/WaveButton".disabled = false
+	
+	# Change enemy/enemies spelling if enemies == 1
+	if current_nodes == 1:
+		$"CanvasLayer/Enemies Remaining".text = str("WAVE ", Global.currentWave, "  -  ", current_nodes, " ENEMY REMAINING")
+	else:
+		$"CanvasLayer/Enemies Remaining".text = str("WAVE ", Global.currentWave, "  -  ", current_nodes, " ENEMIES REMAINING")
 
 	# Hotkey to close the game with ESC
 	if Input.is_action_pressed("ui_cancel"):
@@ -100,7 +113,7 @@ func choose(randArray):
 
 func _on_button_pressed() -> void:
 	if !wave_starting and starting_nodes == current_nodes:
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(1).timeout
 		Global.currentWave += 1;
 		wave_starting = true;
 		starting_nodes = $Enemies.get_child_count();

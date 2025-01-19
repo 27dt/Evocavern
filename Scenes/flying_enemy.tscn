@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxyjniviyhhnj"]
+[gd_scene load_steps=10 format=3 uid="uid://dxyjniviyhhnj"]
 
 [ext_resource type="Script" path="res://scripts/flying_enemy.gd" id="1_l5l1r"]
 [ext_resource type="Texture2D" uid="uid://bh6stbqijegm2" path="res://icon.svg" id="2_m2kno"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_arr4s"]
+[ext_resource type="AudioStream" uid="uid://b1tmsxspswir8" path="res://Assets/SFX/Enemy Hit.wav" id="4_33fa3"]
+[ext_resource type="AudioStream" uid="uid://83jagofuixp4" path="res://Assets/SFX/Enemy Kill.wav" id="5_7k5xt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yfnbv"]
 
@@ -53,6 +55,12 @@ offset_top = -18.0
 offset_right = 40.0
 offset_bottom = 5.0
 label_settings = SubResource("LabelSettings_ik2a8")
+
+[node name="Enemy Hit SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_33fa3")
+
+[node name="Enemy Death SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7k5xt")
 
 [connection signal="timeout" from="RoamingTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="RoamTrigger" to="." method="_on_roam_trigger_area_entered"]
