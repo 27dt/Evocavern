@@ -136,6 +136,8 @@ func _on_flying_enemy_deal_damage(damage: int) -> void:
 		visible = false
 		SPEED = 0
 		JUMP_VELOCITY = 0
+		canShootPrim = false
+		canShootSec = false
 	$Label.text = str("-", damageToDeal);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";

@@ -8,6 +8,7 @@
 size = Vector2(22, 6)
 
 [node name="bullet" type="Area2D" groups=["Bullets"]]
+scale = Vector2(1, 0.28)
 script = ExtResource("1_t6n6u")
 speed = 600
 
