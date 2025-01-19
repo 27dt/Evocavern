@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=21 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -14,9 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
 [ext_resource type="Texture2D" uid="uid://bkvmgcxw6mhg7" path="res://Assets/Bars/exp_progress.png" id="12_dg4io"]
-[ext_resource type="Script" path="res://Scripts/expbar.gd" id="13_bfkls"]
+[ext_resource type="Script" path="res://scripts/expbar.gd" id="13_rgv8t"]
 [ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Texture2D" uid="uid://c0fq0n0sr3hr6" path="res://Assets/Background/gameover.png" id="16_js3ee"]
+[ext_resource type="Script" path="res://scripts/items.gd" id="17_4glm3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvibd"]
 shadow_size = 7
@@ -154,7 +155,7 @@ grow_vertical = 0
 max_value = 60.0
 texture_under = ExtResource("11_a3gvv")
 texture_progress = ExtResource("12_dg4io")
-script = ExtResource("13_bfkls")
+script = ExtResource("13_rgv8t")
 
 [node name="exp" type="Label" parent="CanvasLayer/expbar"]
 layout_mode = 1
@@ -226,22 +227,41 @@ position = Vector2(-1889, 127)
 position = Vector2(-1637, -487)
 
 [node name="Spawn4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-614, 356)
+position = Vector2(-771, 547)
 
 [node name="Spawn5" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(127, 345)
+position = Vector2(76, -345)
 
 [node name="Spawn6" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(964, 339)
+position = Vector2(1078, 555)
 
 [node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1926, 336)
+position = Vector2(1807, 205)
 
 [node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-3778, 254)
+position = Vector2(2443, -331)
+
+[node name="Items" type="Node2D" parent="."]
+script = ExtResource("17_4glm3")
+
+[node name="ItemSpawns" type="Node2D" parent="Items"]
+
+[node name="Spawn1" type="Marker2D" parent="Items/ItemSpawns"]
+position = Vector2(-2147, 68)
+
+[node name="Spawn2" type="Marker2D" parent="Items/ItemSpawns"]
+position = Vector2(-66, -125)
+
+[node name="Spawn3" type="Marker2D" parent="Items/ItemSpawns"]
+position = Vector2(907, 303)
+
+[node name="Spawn4" type="Marker2D" parent="Items/ItemSpawns"]
+position = Vector2(2824, -390)
 
 [connection signal="enemyConnect" from="." to="Player" method="_on_world_enemy_connect"]
 [connection signal="collect" from="testcollectable2" to="Player" method="_on_testcollectable_collect"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
+[connection signal="itemPickup" from="Player" to="Items" method="_on_player_item_pickup"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="pressed" from="CanvasLayer/WaveButton" to="." method="_on_button_pressed"]
+[connection signal="spawnItem" from="CanvasLayer/expbar" to="Items" method="_on_expbar_spawn_item"]

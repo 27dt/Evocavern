@@ -23,6 +23,7 @@ func _ready() -> void:
 	trigger_wave();
 
 func trigger_wave():
+	Global.playerHealth = Global.playerHealthMax
 	var wave_count: int = round(0.7*(Global.currentWave)*(log(Global.currentWave)) + 1);
 	$"CanvasLayer/Enemies Remaining".text = str("Remaining Enemies: ", wave_count)
 	print(str("wavecount:",wave_count))
@@ -62,12 +63,12 @@ func _process(delta: float) -> void:
 	current_nodes = $Enemies.get_child_count();
 	
 	# Disable wave button if enemies > 0
-	if current_nodes != 0:
-		$"CanvasLayer/WaveButton".visible = false
-		$"CanvasLayer/WaveButton".disabled = true
-	else:
+	if current_nodes == 0:
 		$"CanvasLayer/WaveButton".visible = true
 		$"CanvasLayer/WaveButton".disabled = false
+	else:
+		$"CanvasLayer/WaveButton".visible = false
+		$"CanvasLayer/WaveButton".disabled = true
 	
 	# Change enemy/enemies spelling if enemies == 1
 	if current_nodes == 1:
@@ -117,7 +118,6 @@ func choose(randArray):
 	randArray.shuffle();
 	# Return the first element
 	return randArray.front();
-
 
 func _on_button_pressed() -> void:
 	if !wave_starting and starting_nodes == current_nodes:

@@ -78,7 +78,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	print(area.is_in_group("player"))
 	print(area.get_groups())
 	if area.is_in_group("Bullets"):
-		takeDamage(area.damage);
+		takeDamage(round(area.damage * Global.gunDamageScale));
 	if area.is_in_group("player") and !takingDamage:
 		dealDamage.emit(Global.flyingDamage);
 		takeDamage(3)
@@ -104,7 +104,7 @@ func takeDamage(damage: int):
 func poisonDamage():
 	for i: Area2D in $Hitbox.get_overlapping_areas():
 		if i.is_in_group("PoisonCloud"):
-			takeDamage(5);
+			takeDamage(round(5 * Global.nadeDamageScale));
 			await get_tree().create_timer(1).timeout
 
 

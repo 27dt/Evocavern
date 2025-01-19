@@ -23,3 +23,8 @@ var flyingHealthMin = 0;
 
 var thrownGrenade = false;
 var grenadeCooldown = false;
+
+var speedMultiplier = 1.0;
+var nadeDamageScale = 1.0;
+var gunDamageScale = 1.0;
+var jumpScale = 1.0;
