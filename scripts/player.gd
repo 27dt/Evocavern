@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 @export var inv: Inv
 
 signal shoot(pos: Vector2);
+signal grenade(pos: Vector2);
 
 var canShootPrim := true;
 var canShootSec := true;
@@ -43,6 +44,11 @@ func _physics_process(delta: float) -> void:
 		canShootPrim = false;
 		canShootSec = false;
 		$Timers/SecondaryFireTimer.start();
+	
+		# Handle secondary fire.
+	if Input.is_action_just_pressed("unique_ability"):
+		# Send a firing signal to the bullet
+		grenade.emit(global_position, facingDir);
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

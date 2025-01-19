@@ -554,8 +554,11 @@ inv = ExtResource("3_8sca1")
 position = Vector2(316, 0)
 scale = Vector2(2.48, 2.48)
 
+[node name="grenades" type="Node2D" parent="."]
+
 [node name="Bullets" type="Node2D" parent="."]
 
 [connection signal="collect" from="testcollectable" to="Player" method="_on_testcollectable_collect"]
+[connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="dealDamage" from="FlyingEnemy" to="Player" method="_on_flying_enemy_deal_damage"]
