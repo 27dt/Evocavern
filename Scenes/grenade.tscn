@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://yrwu27m3oshs"]
 
 [ext_resource type="Script" path="res://scripts/grenade.gd" id="1_h5fou"]
+[ext_resource type="Texture2D" uid="uid://d3nwbs4f5g83k" path="res://Assets/Items/Grenade.png" id="2_ekkvh"]
 [ext_resource type="Texture2D" uid="uid://wwjia5mf245l" path="res://Assets/Particles/Flame.png" id="2_vsvua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mg85"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fqw6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r8khq"]
 
@@ -16,13 +15,15 @@ mass = 0.125
 angular_velocity = 0.312152
 script = ExtResource("1_h5fou")
 
+[node name="GrenadeSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(2.13205, 2.13205)
+texture = ExtResource("2_ekkvh")
+hframes = 8
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.48, 2.48)
 shape = SubResource("CircleShape2D_7mg85")
-
-[node name="GrenadeSprite" type="Sprite2D" parent="."]
-scale = Vector2(32.32, 32.32)
-texture = SubResource("PlaceholderTexture2D_fqw6p")
 
 [node name="Area2D" type="Area2D" parent="." groups=["PoisonCloud"]]
 

@@ -16,7 +16,7 @@ var takingDamage = false;
 var chasingPlayer: bool = true;
 
 func _process(delta):
-	if Global.thrownGrenade and !takingDamage:
+	if Global.thrownGrenade and !takingDamage and !dead:
 		poisonDamage();
 	move(delta);
 
@@ -77,21 +77,15 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(3)
 
 func takeDamage(damage: int):
-	
-	# this nasty chop-shop of nested if statments prevents poision damage from incrementing the level xp like crazy, 
-	# due to calling takeDamage numerous times.
-	# i swear, i poisoned 1 enemy without "if !dead" and went up 9 levels.
-	
-	if !dead:
-		health -= damage;
-		takingDamage = true;
-		if health <= 0:
-			health = 0;
-			dead = true;
-		if dead:
-			Global.exp += 20
-			Global.enemyKills += 1
-			return
+
+	health -= damage;
+	takingDamage = true;
+	if health <= 0:
+		health = 0;
+		dead = true;
+	if dead:
+		Global.exp += 20
+		Global.enemyKills += 1
 	$Label.text = str("-", damage);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";

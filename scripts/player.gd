@@ -9,11 +9,18 @@ var JUMP_VELOCITY = -620.0
 @export var maxHealth = 100
 @onready var currentHealth: int = maxHealth
 
+#AudioSteamPlayer2D references for SFX
+@onready var footsteps_sfx = $"Footsteps SFX"
+@onready var jump_sfx = $"Jump SFX"
+@onready var level_up_sfx = $"Level Up SFX"
+@onready var pickup_sfx = $"Pickup SFX"
+
 signal shoot(pos: Vector2);
 signal grenade(pos: Vector2);
 
 var canShootPrim := true;
 var canShootSec := true;
+var walking := false;
 
 var doubleJump := true;
 var facingDir := 1;
@@ -30,6 +37,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		jump_sfx.play()
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		doubleJump = true;
@@ -72,8 +81,14 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		facingDir = direction;
+		walking = true;
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		walking = false;
+	
+	if direction and !walking:
+		footsteps_sfx.play()
+		walking = true;
 
 	move_and_slide()
 
@@ -81,6 +96,7 @@ func _on_primary_fire_timer_timeout() -> void:
 	if primFireCount < 3:
 		$Timers/PrimaryFireTimer.start()
 		shoot.emit(global_position, facingDir, false);
+		
 		primFireCount += 1;
 	else:
 		primFireCount = 0;
@@ -107,6 +123,7 @@ func _on_flying_enemy_deal_damage(damage: int) -> void:
 
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
+	pickup_sfx.play()
 
 func _on_world_enemy_connect(enemy: CharacterBody2D) -> void:
 	enemy.dealDamage.connect(_on_flying_enemy_deal_damage);

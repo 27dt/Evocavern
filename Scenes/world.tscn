@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=18 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -11,6 +11,8 @@
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="10_0sygx"]
 [ext_resource type="Script" path="res://Scenes/healthbar.gd" id="10_qur7f"]
 [ext_resource type="Texture2D" uid="uid://bd3oumqioyslu" path="res://Assets/Bars/exp_background.png" id="11_a3gvv"]
+[ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
+[ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
 [ext_resource type="Texture2D" uid="uid://bkvmgcxw6mhg7" path="res://Assets/Bars/exp_progress.png" id="12_dg4io"]
 [ext_resource type="Script" path="res://Scripts/expbar.gd" id="13_bfkls"]
 
@@ -197,10 +199,18 @@ horizontal_alignment = 2
 
 [node name="grenades" type="Node2D" parent="."]
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_gx7w3")
+volume_db = -19.676
+autoplay = true
 
-[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-1134, 373)
+[node name="Level Up SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="Shoot SFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+stream = ExtResource("12_8t7n5")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Spawn2" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-1889, 127)
@@ -219,6 +229,9 @@ position = Vector2(964, 339)
 
 [node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1926, 336)
+
+[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-3778, 254)
 
 [connection signal="enemyConnect" from="." to="Player" method="_on_world_enemy_connect"]
 [connection signal="collect" from="testcollectable" to="Player" method="_on_testcollectable_collect"]
