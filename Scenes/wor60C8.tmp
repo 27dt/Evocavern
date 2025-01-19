@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cbtkn32xr26a3" path="res://Scenes/testcollectable.tscn" id="5_554tw"]
 [ext_resource type="TileSet" uid="uid://d1nxg857nxccv" path="res://Assets/Tilemaps/main_tileset.tres" id="7_7wbv7"]
 [ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="7_shtxr"]
-[ext_resource type="Texture2D" uid="uid://h0jrrsleqscr" path="res://Assets/Healthbar/hb_background.png" id="8_rbpyn"]
-[ext_resource type="Texture2D" uid="uid://cdqxj0kv6c6r7" path="res://Assets/Healthbar/hb_progress.png" id="9_40atq"]
 [ext_resource type="Script" path="res://Scenes/healthbar.gd" id="10_qur7f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1psu7"]
+load_path = "res://.godot/imported/hb_background.png-89cca19fcd260be1f580aa5dbc414b8b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axnrv"]
+load_path = "res://.godot/imported/hb_progress.png-05d38fa906b6e5bbbb980f47f5fc13a3.ctex"
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_m75cs")
@@ -58,15 +62,15 @@ grow_horizontal = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -137.0
-offset_top = 109.0
-offset_right = -9.0
-offset_bottom = 129.0
+offset_left = -102.0
+offset_top = 101.0
+offset_right = -38.0
+offset_bottom = 111.0
 grow_horizontal = 2
-scale = Vector2(2.1472, 2.20266)
+scale = Vector2(3.2, 3.28266)
 value = 10.0
-texture_under = ExtResource("8_rbpyn")
-texture_progress = ExtResource("9_40atq")
+texture_under = SubResource("CompressedTexture2D_1psu7")
+texture_progress = SubResource("CompressedTexture2D_axnrv")
 script = ExtResource("10_qur7f")
 
 [node name="grenades" type="Node2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbtkn32xr26a3"]
 
-[ext_resource type="Script" path="res://testcollectable.gd" id="1_iwd8u"]
+[ext_resource type="Script" path="res://scripts/testcollectable.gd" id="1_iwd8u"]
 [ext_resource type="Texture2D" uid="uid://c1shwvcj6yegt" path="res://Assets/Items/h.png" id="2_eapvr"]
 [ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/Items/testitem_resource.tres" id="2_hayxu"]
 

@@ -1,15 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=9 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
 [ext_resource type="Resource" uid="uid://c766puplh60bk" path="res://Inventory/player_inv.tres" id="3_8sca1"]
 [ext_resource type="PackedScene" uid="uid://dxyjniviyhhnj" path="res://Scenes/flying_enemy.tscn" id="4_nha48"]
 [ext_resource type="PackedScene" uid="uid://cbtkn32xr26a3" path="res://Scenes/testcollectable.tscn" id="5_554tw"]
+[ext_resource type="Script" path="res://Scenes/health_bar.gd" id="6_6ovhw"]
 [ext_resource type="TileSet" uid="uid://d1nxg857nxccv" path="res://Assets/Tilemaps/main_tileset.tres" id="7_7wbv7"]
 [ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="7_shtxr"]
-[ext_resource type="Texture2D" uid="uid://h0jrrsleqscr" path="res://Assets/Healthbar/hb_background.png" id="8_rbpyn"]
-[ext_resource type="Texture2D" uid="uid://cdqxj0kv6c6r7" path="res://Assets/Healthbar/hb_progress.png" id="9_40atq"]
-[ext_resource type="Script" path="res://Scenes/healthbar.gd" id="10_qur7f"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_m75cs")
@@ -23,7 +21,7 @@ z_index = 1
 position = Vector2(161, 616)
 
 [node name="Player" parent="." instance=ExtResource("1_lxvx8")]
-position = Vector2(576, 642)
+position = Vector2(577, 505)
 inv = ExtResource("3_8sca1")
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("4_nha48")]
@@ -46,6 +44,19 @@ scale = Vector2(2.48, 2.48)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = 94.0
+offset_right = 11.0
+offset_bottom = 121.0
+grow_horizontal = 2
+scale = Vector2(1.52, 1.52)
+value = 100.0
+script = ExtResource("6_6ovhw")
+
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_shtxr")]
 anchors_preset = 5
 anchor_left = 0.5
@@ -53,21 +64,6 @@ anchor_right = 0.5
 offset_left = -596.0
 offset_right = -51.0
 grow_horizontal = 2
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -137.0
-offset_top = 109.0
-offset_right = -9.0
-offset_bottom = 129.0
-grow_horizontal = 2
-scale = Vector2(2.1472, 2.20266)
-value = 10.0
-texture_under = ExtResource("8_rbpyn")
-texture_progress = ExtResource("9_40atq")
-script = ExtResource("10_qur7f")
 
 [node name="grenades" type="Node2D" parent="."]
 
