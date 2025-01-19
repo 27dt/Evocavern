@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=15 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/healthbar.gd" id="10_qur7f"]
 [ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
+[ext_resource type="PackedScene" uid="uid://bt15s8517d41o" path="res://Scenes/parallax_bg.tscn" id="13_g8kp7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_epqkf"]
 shadow_size = 7
@@ -134,6 +135,8 @@ position = Vector2(964, 339)
 
 [node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1926, 336)
+
+[node name="ParallaxBG" parent="." instance=ExtResource("13_g8kp7")]
 
 [connection signal="enemyConnect" from="." to="Player" method="_on_world_enemy_connect"]
 [connection signal="collect" from="testcollectable" to="Player" method="_on_testcollectable_collect"]
