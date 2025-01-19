@@ -18,6 +18,9 @@ var takingDamage = false;
 # Chasing player variable
 var chasingPlayer: bool = true;
 
+func _ready() -> void:
+	$AnimatedSprite2D.play("default");
+
 func _process(delta):
 	if Global.thrownGrenade and !takingDamage and !dead:
 		poisonDamage();
