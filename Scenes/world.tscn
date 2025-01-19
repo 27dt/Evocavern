@@ -21,7 +21,7 @@ z_index = 1
 position = Vector2(161, 616)
 
 [node name="Player" parent="." instance=ExtResource("1_lxvx8")]
-position = Vector2(577, 505)
+position = Vector2(85, 633)
 inv = ExtResource("3_8sca1")
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("4_nha48")]

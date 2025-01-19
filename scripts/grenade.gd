@@ -12,6 +12,7 @@ func _ready() -> void:
 	Global.thrownGrenade = true;
 	$Poison.emitting = true;
 	$Area2D.monitorable = true;
-	await get_tree().create_timer(10).timeout;
+	await get_tree().create_timer(5).timeout;
 	Global.thrownGrenade = false;
+	Global.grenadeCooldown = false;
 	self.queue_free();

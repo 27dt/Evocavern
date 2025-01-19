@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkp8qt8lprco1"]
+[gd_scene load_steps=7 format=3 uid="uid://bkp8qt8lprco1"]
 
 [ext_resource type="Texture2D" uid="uid://bh6stbqijegm2" path="res://icon.svg" id="1_gg1u0"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nknvn"]
+[ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_vpnbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpdqg"]
 size = Vector2(47, 129)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mk0c"]
+font = ExtResource("3_vpnbr")
+font_size = 17
+font_color = Color(0.920572, 0.2641, 0.230702, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw8co"]
 size = Vector2(46, 80)
@@ -32,6 +40,13 @@ wait_time = 0.16
 
 [node name="SecondaryFireTimer" type="Timer" parent="Timers"]
 wait_time = 1.509
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = -131.0
+offset_right = 48.0
+offset_bottom = -108.0
+label_settings = SubResource("LabelSettings_7mk0c")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 position = Vector2(0, -68.5)

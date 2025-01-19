@@ -50,7 +50,8 @@ func _physics_process(delta: float) -> void:
 		# Handle secondary fire.
 	if Input.is_action_just_pressed("unique_ability"):
 		# Send a firing signal to the bullet
-		if !Global.thrownGrenade:
+		if !Global.thrownGrenade and !Global.grenadeCooldown:
+			Global.grenadeCooldown = true;
 			grenade.emit(global_position, facingDir);
 
 	# Get the input direction and handle the movement/deceleration.
@@ -88,6 +89,9 @@ func _on_flying_enemy_deal_damage(damage: int) -> void:
 		visible = false
 		SPEED = 0
 		JUMP_VELOCITY = 0
+	$Label.text = str("-", Global.flyingDamage);
+	await get_tree().create_timer(1).timeout
+	$Label.text = "";
 
 func _on_testcollectable_collect(item: InvItem) -> void:
 	inv.insert(item)
