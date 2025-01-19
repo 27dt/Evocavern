@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvb50yotklrki"]
+[gd_scene load_steps=5 format=3 uid="uid://dvb50yotklrki"]
 
 [ext_resource type="Texture2D" uid="uid://dbemrbqsk65jq" path="res://Assets/Inventory/inv_slot.png" id="1_fst30"]
 [ext_resource type="Script" path="res://Inventory/inv_ui_slot.gd" id="1_mg322"]
+[ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_lv68r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4bxl"]
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="inv_ui_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -28,10 +33,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/Panel"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 22.0
-offset_bottom = 26.0
-scale = Vector2(0.7, 0.7)
+offset_left = -1.0
+offset_top = 10.0
+offset_right = 37.0
+offset_bottom = 29.0
+scale = Vector2(0.460001, 0.460001)
+theme_override_fonts/font = ExtResource("3_lv68r")
 text = "99
 "
+label_settings = SubResource("LabelSettings_y4bxl")
+horizontal_alignment = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=11 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
@@ -9,12 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="7_shtxr"]
 [ext_resource type="Texture2D" uid="uid://h0jrrsleqscr" path="res://Assets/Healthbar/hb_background.png" id="8_rbpyn"]
 [ext_resource type="Texture2D" uid="uid://cdqxj0kv6c6r7" path="res://Assets/Healthbar/hb_progress.png" id="9_40atq"]
-[ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="10_0sygx"]
 [ext_resource type="Script" path="res://Scenes/healthbar.gd" id="10_qur7f"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_epqkf"]
-shadow_size = 7
-shadow_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_m75cs")
@@ -73,24 +68,6 @@ value = 10.0
 texture_under = ExtResource("8_rbpyn")
 texture_progress = ExtResource("9_40atq")
 script = ExtResource("10_qur7f")
-
-[node name="Label" type="Label" parent="CanvasLayer/TextureProgressBar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.6051
-offset_top = 14.0618
-offset_right = 83.3949
-offset_bottom = 33.0618
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.509684, 0.509684)
-theme_override_fonts/font = ExtResource("10_0sygx")
-text = "HEALTH"
-label_settings = SubResource("LabelSettings_epqkf")
 
 [node name="grenades" type="Node2D" parent="."]
 
