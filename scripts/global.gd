@@ -16,3 +16,4 @@ var flyingHealthMax = 25;
 var flyingHealthMin = 0;
 
 var thrownGrenade = false;
+var grenadeCooldown = false;

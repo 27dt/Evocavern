@@ -13,7 +13,7 @@ var dead = false;
 var takingDamage = false;
 
 # Chasing player variable
-var chasingPlayer: bool = true;
+var chasingPlayer: bool = false;
 
 func _process(delta):
 	if Global.thrownGrenade and !takingDamage:
@@ -79,9 +79,18 @@ func takeDamage(damage: int):
 	if health <= 0:
 		health = 0;
 		dead = true;
+	$Label.text = str("-", damage);
+	await get_tree().create_timer(1).timeout
+	$Label.text = "";
+
 
 func poisonDamage():
 	for i: Area2D in $Hitbox.get_overlapping_areas():
 		if i.is_in_group("PoisonCloud"):
 			takeDamage(5);
 			await get_tree().create_timer(1).timeout
+
+
+func _on_roam_trigger_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		chasingPlayer = true;
