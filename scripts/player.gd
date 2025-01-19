@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name Player
-
 var SPEED = 300.0
 var JUMP_VELOCITY = -620.0
 
