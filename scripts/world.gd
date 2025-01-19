@@ -51,6 +51,14 @@ func spawn_enemy():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.playerHealth <= 0:
+		$"CanvasLayer/Inv_UI".visible = false
+		$"CanvasLayer/WaveButton".visible = false
+		$"CanvasLayer/Enemies Remaining".visible = false
+		$"CanvasLayer/healthbar".visible = false
+		$"CanvasLayer/expbar".visible = false
+		$"CanvasLayer/gameover".visible = true
+	
 	current_nodes = $Enemies.get_child_count();
 	
 	# Disable wave button if enemies > 0

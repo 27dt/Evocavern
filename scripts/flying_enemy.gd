@@ -18,6 +18,7 @@ var chasingPlayer: bool = true;
 func _process(delta):
 	if Global.thrownGrenade and !takingDamage and !dead:
 		poisonDamage();
+		
 	move(delta);
 
 func move(delta):
@@ -77,7 +78,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		takeDamage(3)
 
 func takeDamage(damage: int):
-
 	health -= damage;
 	takingDamage = true;
 	if health <= 0:
@@ -86,6 +86,7 @@ func takeDamage(damage: int):
 	if dead:
 		Global.exp += 20
 		Global.enemyKills += 1
+		queue_free();
 	$Label.text = str("-", damage);
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";
