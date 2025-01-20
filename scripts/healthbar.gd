@@ -4,5 +4,5 @@ func _process(delta):
 	update()
 
 func update():
-	value = Global.playerHealth * 100 / Global.playerHealthMax
-	$"healthvalue".text = str(value, " / 100")
+	value = Global.playerHealth * Global.playerHealthMax / Global.playerHealthMax
+	$"healthvalue".text = str(value, " / ", Global.playerHealthMax)
