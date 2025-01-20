@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://scripts/expbar.gd" id="13_rgv8t"]
 [ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Texture2D" uid="uid://c0fq0n0sr3hr6" path="res://Assets/Background/gameover.png" id="16_js3ee"]
-[ext_resource type="Script" path="res://scripts/items.gd" id="17_4glm3"]
+[ext_resource type="Script" path="res://scripts/item_handler.gd" id="17_4glm3"]
 [ext_resource type="PackedScene" uid="uid://bmggcc3wykdeu" path="res://Scenes/item.tscn" id="21_4mvi8"]
 [ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/Items/jumpvelocity.tres" id="22_1pan6"]
 [ext_resource type="Resource" uid="uid://da1x1pdlj5spc" path="res://Inventory/Items/movementspeed.tres" id="23_vn5uu"]

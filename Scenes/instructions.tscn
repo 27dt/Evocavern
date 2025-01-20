@@ -41,29 +41,21 @@ offset_bottom = 537.0
 grow_horizontal = 2
 scale = Vector2(0.88, 0.88)
 theme_override_fonts/font = ExtResource("2_u8yij")
-text = "IN EVOCAVERN, YOU MUST EVOLVE TO ADAPT TO YOUR SURROUNDINGS.
+text = "NAVIGATE THE CAVE AND OUTSMART THE FLYING UNIBATS THAT TARGET YOU
+ FROM THE MOMENT YOU SPAWN.
 
-KILL ENEMIES TO GAIN EXPERIENCE AND LEVEL UP.
+IN ORDER TO LEVEL UP TO GET STRONGER, YOU MUST KILL THEM FOR EXP.
 
-WHEN YOU LEVEL UP, ITEMS ARE DROPPED THAT CAN BUFF YOUR STATS, 
-HOWEVER, KEEP IN MIND THAT HEALTH DOESN'T REGENERATE.
+WHEN YOU LEVEL UP, ITEMS ARE DROPPED THAT CAN INCREASE YOUR STATS.
 
+WHILE YOUR HEALTH IS REPLENISHED EACH ROUND, UNIBAT DAMAGE AND HEALTH 
+SCALES WITH EACH ONE KILLED.
 
-
-UTILIZE YOUR WEAPONS TO DEFEAT INCOMING WAVES OF ENEMIES:
-
-LMB:	                  	PRIMARY TRI-FIRE
-RMB:           	CHARGED SINGLE FIRE
-E:                   											            GRENADE
-
-
-
-
-
-
-
-HOW LONG WILL YOU SURVIVE?
-"
+A / D - MOVEMENT
+SPACE - SINGLE/DOUBLE JUMP
+E - THROW GRENADE
+LMB - PRIMARY FIRE
+RMB - SECONDARY FIRE"
 label_settings = SubResource("LabelSettings_hy46k")
 horizontal_alignment = 1
 
@@ -73,9 +65,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -168.5
-offset_top = 466.0
+offset_top = 489.0
 offset_right = 14.5
-offset_bottom = 493.0
+offset_bottom = 516.0
 grow_horizontal = 2
 scale = Vector2(1.84, 1.84)
 theme_override_fonts/font = ExtResource("2_u8yij")
