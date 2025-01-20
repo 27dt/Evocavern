@@ -73,7 +73,7 @@ func _on_player_item_pickup(name: String) -> void:
 	match name:
 		"jumpvelocity":
 			jumpVelocity()
-		"totalhealhth":
+		"totalhealth":
 			totalHealth()
 		"scalegun":
 			damageScaleGun()
