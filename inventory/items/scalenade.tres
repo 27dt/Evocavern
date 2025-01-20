@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_as8a5")
-name = "scalenade"
+name = "SCALE NADE"
+text = "INCREASES NADE DAMAGE MULTIPLIER BY 0.2X"
 texture = ExtResource("2_r3fyu")

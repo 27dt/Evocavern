@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvb50yotklrki"]
+[gd_scene load_steps=6 format=3 uid="uid://dvb50yotklrki"]
 
 [ext_resource type="Texture2D" uid="uid://dbemrbqsk65jq" path="res://Assets/Inventory/inv_slot.png" id="1_fst30"]
 [ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_mg322"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_lv68r"]
+[ext_resource type="Texture2D" uid="uid://bw52v7a6g8qc6" path="res://Assets/Inventory/inv_bg.png" id="4_6ux6k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4bxl"]
 shadow_size = 7
@@ -43,3 +44,38 @@ text = "99
 "
 label_settings = SubResource("LabelSettings_y4bxl")
 horizontal_alignment = 2
+
+[node name="Tooltip" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -54.0
+offset_top = 36.0
+offset_right = 27.0
+offset_bottom = 50.0
+scale = Vector2(1.8, 1.8)
+
+[node name="background" type="Sprite2D" parent="Tooltip"]
+position = Vector2(40.5, 7)
+scale = Vector2(5.0625, 0.875)
+texture = ExtResource("4_6ux6k")
+
+[node name="item_name" type="Label" parent="Tooltip"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 159.0
+offset_bottom = 25.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("3_lv68r")
+
+[node name="item_text" type="Label" parent="Tooltip"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 499.0
+offset_bottom = 31.0
+scale = Vector2(0.117778, 0.117778)
+theme_override_fonts/font = ExtResource("3_lv68r")
+
+[connection signal="mouse_entered" from="CenterContainer" to="." method="_on_center_container_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer" to="." method="_on_center_container_mouse_exited"]
