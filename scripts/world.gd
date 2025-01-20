@@ -128,5 +128,8 @@ func _on_button_pressed() -> void:
 		current_nodes = $Enemies.get_child_count();
 		trigger_wave();
 
-func _on_scalenade_collect(item: InvItem) -> void:
-	pass # Replace with function body.
+
+func _on_items_attatch_item_signal(item: StaticBody2D) -> void:
+	$CanvasLayer/ItemSpawnText.visible = true;
+	await get_tree().create_timer(1).timeout
+	$CanvasLayer/ItemSpawnText.visible = false;
