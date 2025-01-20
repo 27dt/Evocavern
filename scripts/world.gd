@@ -63,13 +63,12 @@ func _process(delta: float) -> void:
 	current_nodes = $Enemies.get_child_count();
 	
 	# Disable wave button if enemies > 0
-	if current_nodes == 0:
+	if !wave_starting and current_nodes == 0:
 		$"CanvasLayer/WaveButton".visible = true
 		$"CanvasLayer/WaveButton".disabled = false
 	else:
 		$"CanvasLayer/WaveButton".visible = false
 		$"CanvasLayer/WaveButton".disabled = true
-	
 	# Change enemy/enemies spelling if enemies == 1
 	if current_nodes == 1:
 		$"CanvasLayer/Enemies Remaining".text = str("WAVE ", Global.currentWave, "  -  ", current_nodes, " ENEMY REMAINING")
@@ -121,9 +120,11 @@ func choose(randArray):
 
 func _on_button_pressed() -> void:
 	if !wave_starting and starting_nodes == current_nodes:
+		wave_starting = true;
+		$"CanvasLayer/WaveButton".visible = false
+		$"CanvasLayer/WaveButton".disabled = true
 		await get_tree().create_timer(1).timeout
 		Global.currentWave += 1;
-		wave_starting = true;
 		starting_nodes = $Enemies.get_child_count();
 		current_nodes = $Enemies.get_child_count();
 		trigger_wave();
