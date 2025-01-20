@@ -2,41 +2,22 @@ extends Node
 
 const items: PackedScene = preload("res://Scenes/item.tscn");
 
+signal attatchItemSignal(item: StaticBody2D);
+
 func jumpVelocity():
-	print("jump upgrade")
-	var item = items.instantiate();
-	var pos = chooseSpawn();
-	self.add_child(item)
-	item.global_position = pos;
-	Global.jumpScale += 1.15
+	Global.jumpScale += 0.15
+
 func totalHealth():
-	print("health upgrade")
-	var item = items.instantiate();
-	var pos = chooseSpawn();
-	self.add_child(item)
-	item.global_position = pos;
 	Global.playerHealthMax = round(Global.playerHealthMax * 1.3);
+
 func damageScaleGun():
-	print("gun upgrade")
-	var item = items.instantiate();
-	var pos = chooseSpawn();
-	self.add_child(item)
-	item.global_position = pos;
-	Global.gunDamageScale += 1.2;
+	Global.gunDamageScale += 0.2;
+
 func damageScaleNade():
-	print("nade upgrade")
-	var item = items.instantiate();
-	var pos = chooseSpawn();
-	self.add_child(item)
-	item.global_position = pos;
-	Global.nadeDamageScale += 1.2;
+	Global.nadeDamageScale += 0.2;
+
 func movementSpeed():
-	print("move upgrade")
-	var item = items.instantiate();
-	var pos = chooseSpawn();
-	self.add_child(item)
-	item.global_position = pos;
-	Global.speedMultiplier += 1.15;
+	Global.speedMultiplier += 0.15;
 
 func chooseSpawn():
 	var spawnPoint: Marker2D = choose([
@@ -47,12 +28,35 @@ func chooseSpawn():
 	])
 	return spawnPoint.global_position;
 
+func chooseItem():
+	var myResource = load("res://Inventory/Items/movementspeed.tres")
+	print(myResource)
+	print(myResource.name)
+	print(myResource.texture)
+	var dir_name = "res://Inventory/Items";
+	var dir = DirAccess.open(dir_name);
+	var file_names = dir.get_files();
+	
+	var rng = RandomNumberGenerator.new();
+	var randomInt = rng.randi_range(0,4);
+	
+	print(file_names)
+	var item: InvItem = load(str("res://Inventory/Items/", file_names[randomInt]));
+	print(item)
+	print(item.name)
+	print(item.texture)
+	return item;
+
 func _on_expbar_spawn_item() -> void:
 	var item = items.instantiate();
 	var pos = chooseSpawn();
 	self.add_child(item)
 	item.global_position = pos;
-	
+	item.item = chooseItem();
+	item.get_child(0).texture = item.item.texture
+	attatchItemSignal.emit(item);
+	print(item.item.name);
+	print(item.item.texture);
 
 # Chooses a random element from an array
 func choose(randArray):
@@ -61,20 +65,18 @@ func choose(randArray):
 	# Return the first element
 	return randArray.front();
 
-func _on_player_item_pickup() -> void:
-	var rng = RandomNumberGenerator.new();
-	var itemspawn = rng.randi_range(1,6);
+func _on_player_item_pickup(name: String) -> void:
 	
-	match itemspawn:
-		1:
+	match name:
+		"jumpvelocity":
 			jumpVelocity()
-		2:
+		"totalhealhth":
 			totalHealth()
-		3:
+		"scalegun":
 			damageScaleGun()
-		4:
+		"scalenade":
 			damageScaleNade()
-		5:
+		"movementspeed":
 			movementSpeed();
 		_:
 			print("issue")

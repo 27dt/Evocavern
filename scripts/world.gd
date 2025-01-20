@@ -26,8 +26,8 @@ func trigger_wave():
 	Global.playerHealth = Global.playerHealthMax
 	var wave_count: int = round(0.7*(Global.currentWave)*(log(Global.currentWave)) + 1);
 	$"CanvasLayer/Enemies Remaining".text = str("Remaining Enemies: ", wave_count)
-	print(str("wavecount:",wave_count))
-	print(Global.currentWave)
+
+	Global.flyingHealth = round(0.4*(Global.currentWave)*(log(Global.currentWave)) + 25);
 	for i in range(wave_count):
 		print("in loop")
 		await get_tree().create_timer(1).timeout
