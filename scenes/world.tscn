@@ -54,14 +54,16 @@ grow_horizontal = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.0
-offset_top = 314.0
-offset_right = 76.0
-offset_bottom = 345.0
+offset_left = -109.0
+offset_top = 194.0
+offset_right = 99.0
+offset_bottom = 256.0
 grow_horizontal = 2
 scale = Vector2(1.08, 1.08)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("10_0sygx")
-text = "NEXT WAVE"
+text = "CLICK FOR
+NEXT WAVE"
 
 [node name="Enemies Remaining" type="Label" parent="CanvasLayer"]
 anchors_preset = 7
