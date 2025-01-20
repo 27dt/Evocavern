@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://4h45cavynsii"]
+[gd_scene load_steps=23 format=4 uid="uid://4h45cavynsii"]
 
 [ext_resource type="PackedScene" uid="uid://bkp8qt8lprco1" path="res://Scenes/player.tscn" id="1_lxvx8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m75cs"]
+[ext_resource type="Resource" uid="uid://c766puplh60bk" path="res://Inventory/player_inv.tres" id="3_8sca1"]
 [ext_resource type="TileSet" uid="uid://d1nxg857nxccv" path="res://Assets/Tilemaps/main_tileset.tres" id="7_7wbv7"]
 [ext_resource type="PackedScene" uid="uid://dy5mneb2k8d44" path="res://Inventory/inv_ui.tscn" id="7_shtxr"]
 [ext_resource type="Texture2D" uid="uid://h0jrrsleqscr" path="res://Assets/Bars/hb_background.png" id="8_rbpyn"]
@@ -16,6 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Texture2D" uid="uid://c0fq0n0sr3hr6" path="res://Assets/Background/gameover.png" id="16_js3ee"]
 [ext_resource type="Script" path="res://scripts/item_handler.gd" id="17_4glm3"]
+[ext_resource type="PackedScene" uid="uid://bmggcc3wykdeu" path="res://Scenes/item.tscn" id="21_4mvi8"]
+[ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/Items/jumpvelocity.tres" id="22_1pan6"]
+[ext_resource type="Resource" uid="uid://da1x1pdlj5spc" path="res://Inventory/Items/movementspeed.tres" id="23_vn5uu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvibd"]
 shadow_size = 7
@@ -37,6 +41,7 @@ tile_set = ExtResource("7_7wbv7")
 [node name="Player" parent="." instance=ExtResource("1_lxvx8")]
 position = Vector2(144, 649)
 scale = Vector2(1, 0.982928)
+inv = ExtResource("3_8sca1")
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -251,10 +256,19 @@ position = Vector2(907, 303)
 [node name="Spawn4" type="Marker2D" parent="Items/ItemSpawns"]
 position = Vector2(2824, -390)
 
+[node name="jumpvelocity" parent="." instance=ExtResource("21_4mvi8")]
+position = Vector2(238, 639)
+item = ExtResource("22_1pan6")
+
+[node name="movementspeed" parent="." instance=ExtResource("21_4mvi8")]
+position = Vector2(325, 639)
+item = ExtResource("23_vn5uu")
+
 [connection signal="enemyConnect" from="." to="Player" method="_on_world_enemy_connect"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="itemPickup" from="Player" to="Items" method="_on_player_item_pickup"]
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="pressed" from="CanvasLayer/WaveButton" to="." method="_on_button_pressed"]
 [connection signal="spawnItem" from="CanvasLayer/expbar" to="Items" method="_on_expbar_spawn_item"]
-[connection signal="attatchItemSignal" from="Items" to="Player" method="_on_items_attatch_item_signal"]
+[connection signal="collect" from="jumpvelocity" to="Player" method="_on_item_collect"]
+[connection signal="collect" from="movementspeed" to="Player" method="_on_item_collect"]

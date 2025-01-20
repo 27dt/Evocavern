@@ -14,7 +14,7 @@ var JUMP_VELOCITY = -620.0
 
 signal shoot(pos: Vector2);
 signal grenade(pos: Vector2);
-signal itemPickup();
+signal itemPickup(name: String);
 
 var canShootPrim := true;
 var canShootSec := true;
@@ -147,5 +147,9 @@ func _on_world_enemy_connect(enemy: CharacterBody2D) -> void:
 	enemy.dealDamage.connect(_on_flying_enemy_deal_damage);
 
 func _on_item_collect(item: InvItem) -> void:
+	itemPickup.emit(item.name)
 	inv.insert(item)
 	pickup_sfx.play()
+
+func _on_items_attatch_item_signal(item: StaticBody2D) -> void:
+	item.collect.connect(_on_item_collect)
