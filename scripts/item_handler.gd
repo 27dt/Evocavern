@@ -9,6 +9,7 @@ func jumpVelocity():
 
 func totalHealth():
 	Global.playerHealthMax = round(Global.playerHealthMax * 1.3);
+	$"../CanvasLayer/healthbar".max_value = Global.playerHealthMax
 
 func damageScaleGun():
 	Global.gunDamageScale += 0.2;
@@ -69,17 +70,17 @@ func choose(randArray):
 
 func _on_player_item_pickup(name: String) -> void:
 	print("playerpickup");
-
-	match name:
-		"jumpvelocity":
-			jumpVelocity()
-		"totalhealth":
-			totalHealth()
-		"scalegun":
-			damageScaleGun()
-		"scalenade":
-			damageScaleNade()
-		"movementspeed":
-			movementSpeed();
-		_:
-			print("issue")
+	totalHealth()
+	#match name:
+		#"jumpvelocity":
+			#jumpVelocity()
+		#"totalhealth":
+			#totalHealth()
+		#"scalegun":
+			#damageScaleGun()
+		#"scalenade":
+			#damageScaleNade()
+		#"movementspeed":
+			#movementSpeed();
+		#_:
+			#print("issue")
