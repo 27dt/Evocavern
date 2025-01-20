@@ -70,17 +70,17 @@ func choose(randArray):
 
 func _on_player_item_pickup(name: String) -> void:
 	print("playerpickup");
-	totalHealth()
-	#match name:
-		#"jumpvelocity":
-			#jumpVelocity()
-		#"totalhealth":
-			#totalHealth()
-		#"scalegun":
-			#damageScaleGun()
-		#"scalenade":
-			#damageScaleNade()
-		#"movementspeed":
-			#movementSpeed();
-		#_:
-			#print("issue")
+
+	match name:
+		"JUMP VELOCITY":
+			jumpVelocity()
+		"TOTAL HEALTH":
+			totalHealth()
+		"SCALE GUN":
+			damageScaleGun()
+		"SCALE NADE":
+			damageScaleNade()
+		"MOVEMENT SPEED":
+			movementSpeed();
+		_:
+			print("issue")
