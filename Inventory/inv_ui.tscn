@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy5mneb2k8d44"]
 
-[ext_resource type="Script" path="res://Inventory/inv_ui.gd" id="1_armte"]
-[ext_resource type="PackedScene" uid="uid://dvb50yotklrki" path="res://Inventory/inv_ui_slot.tscn" id="2_5b3lg"]
+[ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_armte"]
+[ext_resource type="PackedScene" uid="uid://dvb50yotklrki" path="res://inventory/inv_ui_slot.tscn" id="2_5b3lg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r6hxc"]
 load_path = "res://.godot/imported/inv_bg.png-ef67aefbaf89ad318574b7dfcdefefeb.ctex"

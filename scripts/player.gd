@@ -147,9 +147,11 @@ func _on_world_enemy_connect(enemy: CharacterBody2D) -> void:
 	enemy.dealDamage.connect(_on_flying_enemy_deal_damage);
 
 func _on_item_collect(item: InvItem) -> void:
+	print("item collect signal")
 	itemPickup.emit(item.name)
 	inv.insert(item)
 	pickup_sfx.play()
 
 func _on_items_attatch_item_signal(item: StaticBody2D) -> void:
+	print("items atatch item signal")
 	item.collect.connect(_on_item_collect)

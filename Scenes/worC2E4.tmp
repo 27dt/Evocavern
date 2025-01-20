@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://h0jrrsleqscr" path="res://Assets/Bars/hb_background.png" id="8_rbpyn"]
 [ext_resource type="Texture2D" uid="uid://cdqxj0kv6c6r7" path="res://Assets/Bars/hb_progress.png" id="9_40atq"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="10_0sygx"]
-[ext_resource type="Script" path="res://Scripts/healthbar.gd" id="10_qur7f"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="10_qur7f"]
 [ext_resource type="Texture2D" uid="uid://bd3oumqioyslu" path="res://Assets/Bars/exp_background.png" id="11_a3gvv"]
 [ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://c0fq0n0sr3hr6" path="res://Assets/Background/gameover.png" id="16_js3ee"]
 [ext_resource type="Script" path="res://scripts/item_handler.gd" id="17_4glm3"]
 [ext_resource type="PackedScene" uid="uid://bmggcc3wykdeu" path="res://Scenes/item.tscn" id="21_4mvi8"]
-[ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/Items/jumpvelocity.tres" id="22_1pan6"]
-[ext_resource type="Resource" uid="uid://da1x1pdlj5spc" path="res://Inventory/Items/movementspeed.tres" id="23_vn5uu"]
+[ext_resource type="Resource" uid="uid://cg6v3hdl2v838" path="res://Inventory/items/jumpvelocity.tres" id="22_1pan6"]
+[ext_resource type="Resource" uid="uid://da1x1pdlj5spc" path="res://Inventory/items/movementspeed.tres" id="23_vn5uu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvibd"]
 shadow_size = 7

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmwhvjxvbtjtt"]
 
 [ext_resource type="Texture2D" uid="uid://ciokai443w5iu" path="res://Assets/Background/startmenu.png" id="1_0i1sw"]
-[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="2_abcsx"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="2_abcsx"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="2_gwbir"]
 
 [node name="TextureRect" type="TextureRect"]

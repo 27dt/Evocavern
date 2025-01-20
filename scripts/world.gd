@@ -1,8 +1,8 @@
 extends Node2D
 
-const bulletScene: PackedScene = preload("res://Scenes/bullet.tscn")
-const grenadeScene: PackedScene = preload("res://Scenes/grenade.tscn")
-const enemy_scene: PackedScene = preload("res://Scenes/flying_enemy.tscn")
+const bulletScene: PackedScene = preload("res://scenes/bullet.tscn")
+const grenadeScene: PackedScene = preload("res://scenes/grenade.tscn")
+const enemy_scene: PackedScene = preload("res://scenes/flying_enemy.tscn")
 
 @onready var shoot_sfx = $"Shoot SFX"
 

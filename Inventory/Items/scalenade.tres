@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://s3aq2si1lh80"]
 
-[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_as8a5"]
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_as8a5"]
 [ext_resource type="Texture2D" uid="uid://mb7tuibj2mvd" path="res://Assets/Items/scalenade.png" id="2_r3fyu"]
 
 [resource]

@@ -1,6 +1,6 @@
 extends Node
 
-const items: PackedScene = preload("res://Scenes/item.tscn");
+const items: PackedScene = preload("res://scenes/item.tscn");
 
 signal attatchItemSignal(item: StaticBody2D);
 
@@ -29,11 +29,11 @@ func chooseSpawn():
 	return spawnPoint.global_position;
 
 func chooseItem():
-	var myResource = load("res://Inventory/Items/movementspeed.tres")
+	var myResource = load("res://inventory/items/movementspeed.tres")
 	print(myResource)
 	print(myResource.name)
 	print(myResource.texture)
-	var dir_name = "res://Inventory/Items";
+	var dir_name = "res://inventory/items";
 	var dir = DirAccess.open(dir_name);
 	var file_names = dir.get_files();
 	
@@ -41,18 +41,20 @@ func chooseItem():
 	var randomInt = rng.randi_range(0,4);
 	
 	print(file_names)
-	var item: InvItem = load(str("res://Inventory/Items/", file_names[randomInt]));
+	var item: InvItem = load(str("res://inventory/items/", file_names[randomInt]));
 	print(item)
 	print(item.name)
 	print(item.texture)
 	return item;
 
 func _on_expbar_spawn_item() -> void:
+	print("spawn");
 	var item = items.instantiate();
 	var pos = chooseSpawn();
 	self.add_child(item)
 	item.global_position = pos;
 	item.item = chooseItem();
+	print("chose item");
 	item.get_child(0).texture = item.item.texture
 	attatchItemSignal.emit(item);
 	print(item.item.name);
@@ -66,7 +68,8 @@ func choose(randArray):
 	return randArray.front();
 
 func _on_player_item_pickup(name: String) -> void:
-	
+	print("playerpickup");
+
 	match name:
 		"jumpvelocity":
 			jumpVelocity()

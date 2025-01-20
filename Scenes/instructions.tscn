@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7ghcmby5nghe"]
 
 [ext_resource type="Texture2D" uid="uid://byo862dk3ce7t" path="res://Assets/Background/Evocavern_background.png" id="1_yio4h"]
-[ext_resource type="Script" path="res://Scripts/instructions.gd" id="2_0x2ht"]
+[ext_resource type="Script" path="res://scripts/instructions.gd" id="2_0x2ht"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="2_u8yij"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hy46k"]

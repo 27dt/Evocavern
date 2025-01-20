@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvb50yotklrki"]
 
 [ext_resource type="Texture2D" uid="uid://dbemrbqsk65jq" path="res://Assets/Inventory/inv_slot.png" id="1_fst30"]
-[ext_resource type="Script" path="res://Inventory/inv_ui_slot.gd" id="1_mg322"]
+[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_mg322"]
 [ext_resource type="FontFile" uid="uid://b2g5iqivuig7" path="res://Assets/Fonts/rortypebeat.ttf" id="3_lv68r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4bxl"]

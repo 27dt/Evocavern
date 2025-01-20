@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://diqysvpkdmg4w" path="res://Assets/SFX/i want to kill myself.wav" id="11_gx7w3"]
 [ext_resource type="AudioStream" uid="uid://dbmry22uubql8" path="res://Assets/SFX/Shoot SFX.wav" id="12_8t7n5"]
 [ext_resource type="Texture2D" uid="uid://bkvmgcxw6mhg7" path="res://Assets/Bars/exp_progress.png" id="12_dg4io"]
-[ext_resource type="Script" path="res://Scripts/expbar.gd" id="13_bfkls"]
+[ext_resource type="Script" path="res://scripts/expbar.gd" id="13_bfkls"]
 [ext_resource type="AudioStream" uid="uid://cx4xxei50bh1c" path="res://Assets/SFX/Level Up.wav" id="14_fc1ey"]
 [ext_resource type="Script" path="res://scripts/items.gd" id="17_4glm3"]
 
