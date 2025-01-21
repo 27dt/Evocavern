@@ -15,6 +15,8 @@ var takingDamage = false;
 @onready var enemy_hit_sfx = $"Enemy Hit SFX"
 @onready var enemy_death_sfx = $"Enemy Death SFX"
 
+@onready var navAgent = $NavigationAgent2D
+
 # Chasing player variable
 var chasingPlayer: bool = true;
 
@@ -28,21 +30,21 @@ func _process(delta):
 	move(delta);
 
 func move(delta):
-	player = Global.playerBody;
+	dir = to_local(navAgent.get_next_path_position()).normalized();
 	if !dead:
 		# Move randomly if not chasing player
 		if chasingPlayer and !takingDamage:
-			velocity = position.direction_to(player.position) * speed;
+			velocity = dir * speed;
 		elif chasingPlayer and takingDamage:
 			var oldvelocity = velocity;
-			var knockback_dir = position.direction_to(player.position) * -100;
+			var knockback_dir = dir * -100;
 			velocity = knockback_dir;
 			await get_tree().create_timer(1).timeout
 			velocity = oldvelocity;
 			takingDamage = false;
 		elif !chasingPlayer and takingDamage:
 			var oldvelocity = velocity;
-			var knockback_dir = position.direction_to(player.position) * -100;
+			var knockback_dir = dir * -100;
 			velocity = knockback_dir;
 			await get_tree().create_timer(1).timeout
 			velocity = oldvelocity;
@@ -54,18 +56,8 @@ func move(delta):
 
 		await get_tree().create_timer(0.75).timeout
 		queue_free();
-		print("exp: ", Global.exp)
-		print("enemy kills: ", Global.enemyKills)
+
 	move_and_slide();
-
-# Function connected to the Timer object's signal
-func _on_timer_timeout() -> void:
-	# Sets a random timeout for the timer (random flying movement)
-	$RoamingTimer.wait_time = choose([0.25, 0.5, 0.75, 1.0]);
-
-	# Choose a random direction if not chasing player
-	if !chasingPlayer:
-		dir = choose([Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]);
 
 # Chooses a random element from an array
 func choose(randArray):
@@ -100,14 +92,12 @@ func takeDamage(damage: int):
 	await get_tree().create_timer(1).timeout
 	$Label.text = "";
 
-
 func poisonDamage():
 	for i: Area2D in $Hitbox.get_overlapping_areas():
 		if i.is_in_group("PoisonCloud"):
 			takeDamage(round(5 * Global.nadeDamageScale));
 			await get_tree().create_timer(1).timeout
 
-
-func _on_roam_trigger_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		chasingPlayer = true;
+func _on_path_timeout_timeout() -> void:
+	player = Global.playerBody;
+	navAgent.target_position = player.global_position;

@@ -22,3 +22,6 @@ color = Color(1, 0.816667, 0, 1)
 visible = false
 position = Vector2(0, 1.06437e-07)
 shape = SubResource("RectangleShape2D_0tu2m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
